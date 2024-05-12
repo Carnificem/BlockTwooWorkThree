@@ -4,36 +4,45 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
-public class CalculatorService implements CalculatorServiceInterface {
+public  class CalculatorService implements CalculatorServiceInterface {
 
 
-    public String calculator() {
-        return "Добро пожаловать";
+    public int calculatorPlus(int a, int b) {
+        return (a + b);
     }
 
-    public String answerCalculator() {
-        return "Добро пожаловать в калкулятор!";
-
+    public int calculatorMinus(int a, int b) {
+        return (a - b);
     }
 
-    public String calculatorPlus(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return a + "+" + b + "=" + (a + b);
+    public int calculatorMultiplay(int a, int b) {
+        return (a * b);
     }
 
-    public String calculatorMinus(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return a + "-" + b + "=" + (a - b);
-    }
+    public int calculatorDivide(int a, int b) {
+        return (a / b);
 
-    public String calculatorMultiplay(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return (a + "*" + b + "=" + (a * b));
-    }
 
-    public String calculatorDivide(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        if (a == 0 || b == 0) {
-            return "на ноль делить нельзя";
         }
-        return a + "/" + b + "=" + (a / b);
 
+    @Override
+    public int calculatorPlus() {
+        return 0;
     }
 
+    @Override
+    public int calculatorMinus() {
+        return 0;
+    }
+
+    @Override
+    public int calculatorMultiplay() {
+        return 0;
+    }
+
+    @Override
+    public int calculatorDivide() {
+        return 0;
+    }
 }
+

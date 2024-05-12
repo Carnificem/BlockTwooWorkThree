@@ -1,11 +1,14 @@
 package pro.sky.skyprospringcalculator;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.ansi.AnsiColor;
+import org.springframework.web.bind.annotation.*;
+
+import javax.swing.*;
+import java.awt.*;
 
 @RestController
+@RequestMapping("/calculator")
+
 public class CalculatorController {
     private final CalculatorServiceInterface calculatorService;
 
@@ -13,36 +16,33 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
-    @GetMapping
+    @GetMapping()
     public String calculator() {
-        return calculatorService.calculator();
+        return ("Добро пожаловать в калькулятор");
     }
 
-    @GetMapping(path = "/calculator")
-    public String answerCalculator() {
-        return calculatorService.answerCalculator();
+    @GetMapping(path = "/plus")
+    public String сalculatorPlus(@RequestParam("num1") int a, @RequestParam("num2") int b) {
+        //return calculatorService.calculatorPlus();
+        return a + "+" + b + "=" + (a + b);
     }
 
-    @PostMapping(path = "/calculator/plus")
-    public String calculatorPlus(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return calculatorService.calculatorPlus(a, b);
-    }
-
-    @GetMapping(path = "/calculator/minus")
+    @GetMapping(path = "/minus")
     public String calculatorMinus(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return calculatorService.calculatorMinus(a, b);
+        return a + "-" + b + "=" + (a - b);
     }
-
-    @GetMapping(path = "/calculator/multiplay")
+    @GetMapping(path = "/multiplay")
     public String calculatorMultiplay(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return calculatorService.calculatorMultiplay(a, b);
+        return (a + "*" + b + "=" + (a * b));
     }
+    @GetMapping(path = "/divide")
+    public String calculatorDivide(@RequestParam("num1") int a, @RequestParam("num2") int b) {
+        if (a == 0 || b == 0) {
 
-    @GetMapping(path = "/calculator/divide")
-    public String calculatorDevide(@RequestParam("num1") int a, @RequestParam("num2") int b) {
-        return calculatorService.calculatorDivide(a, b);
+            return ("На ноль делить нельзя");
+        }
+        return a + "/" + b + "=" + (a / b);
 
     }
-
 }
 
