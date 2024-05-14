@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Service
 public class CalculatorService {
 
+
     public int calculatorPlus(int a, int b) {
         return a + b;
     }
